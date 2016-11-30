@@ -20,12 +20,7 @@ class Metronic extends \yii\base\Component {
     /**
      * @var AssetBundle
      */
-    public static $assetsBundle;
-
-    /**
-     * Assets link
-     */
-    const ASSETS_LINK = __DIR__.'/assets';
+    public static $assetsBundle;    
 
     /**
      * Theme
@@ -245,11 +240,6 @@ class Metronic extends \yii\base\Component {
         if (!$this->resources)
         {
             throw new InvalidConfigException('You have to specify resources locations to be able to create symbolic links. Specify "admin" and "global" theme folder locations.');
-        }
-
-        if (!is_link(self::ASSETS_LINK) && !is_dir(self::ASSETS_LINK))
-        {
-            symlink($this->resources, self::ASSETS_LINK);
         }
     }
 

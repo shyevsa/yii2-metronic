@@ -17,6 +17,7 @@ class BaseAssetBundle extends AssetBundle {
 
     public function init()
     {
+        $this->sourcePath = Yii::$app->metronic->resources;
         foreach($this->css as $k=>$v) {
             if (strpos($v,'.min.css')===false) {
                 $this->css[$k] = defined(YII_ENV_DEV) ? $v : str_replace('.css','.min.css',$v);
