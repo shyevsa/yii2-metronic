@@ -7,6 +7,7 @@
  */
 namespace dlds\metronic\bundles;
 
+use Yii;
 use yii\web\AssetBundle;
 
 class BaseAssetBundle extends AssetBundle {
@@ -17,6 +18,10 @@ class BaseAssetBundle extends AssetBundle {
 
     public function init()
     {
+       if(!isset(Yii::$app->metronic->resources)){
+         throw new yii\base\InvalidConfigException("The components.metronic.resource is required");
+       }
+
         $this->sourcePath = Yii::$app->metronic->resources;
         foreach($this->css as $k=>$v) {
             if (strpos($v,'.min.css')===false) {

@@ -196,6 +196,7 @@ class Nav extends \yii\bootstrap\Nav {
     private function _getLinkTag($item)
     {
         $dropdownType = ArrayHelper::getValue($item, 'dropdownType', self::TYPE_DEFAULT);
+        $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;         
 
         if ($dropdownType !== self::TYPE_DEFAULT)
         {
@@ -203,7 +204,7 @@ class Nav extends \yii\bootstrap\Nav {
         }
         else
         {
-            $label = $this->encodeLabels ? Html::encode($item['label']) : $item['label'];
+            $label = $encodeLabel ? Html::encode($item['label']) : $item['label'];
         }
 
         $icon = ArrayHelper::getValue($item, 'icon', null);
