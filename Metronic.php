@@ -39,6 +39,10 @@ class Metronic extends \yii\base\Component {
      */
     const THEME_DARK = 'default';
     const THEME_LIGHT = 'light';
+    const THEME_GRAY = 'grey';
+    const THEME_DARK_BLUE = 'darkblue';
+    const THEME_BLUE = 'blue';
+    const THEME_LIGHT_2 = 'light2';
 
     /**
      * Style
@@ -46,6 +50,7 @@ class Metronic extends \yii\base\Component {
     const STYLE_SQUARE = 'default';
     const STYLE_ROUNDED = 'rounded';
     const STYLE_MATERIAL = 'material';
+    const STYLE_ANGULARJS = 'angularjs';
 
     /**
      * Layout
