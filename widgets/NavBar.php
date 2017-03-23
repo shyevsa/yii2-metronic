@@ -1,10 +1,8 @@
 <?php
-
 /**
  * @copyright Copyright (c) 2014 icron.org
  * @license http://yii2metronic.icron.org/license.html
  */
-
 namespace dlds\metronic\widgets;
 
 use dlds\metronic\Metronic;
@@ -37,7 +35,8 @@ use Yii;
  *
  * @see http://twitter.github.io/bootstrap/components.html#navbar
  */
-class NavBar extends \yii\bootstrap\NavBar {
+class NavBar extends \yii\bootstrap\NavBar
+{
 
     /**
      * @var string the url to logo of the brand.
@@ -50,12 +49,16 @@ class NavBar extends \yii\bootstrap\NavBar {
     public $brandWrapperOptions;
     
     /**
+     * @var boolean render the toogle menu button or not
+     */
+    public $toogleMenuButton = true;
+
+    /**
      * Initializes the widget.
      */
     public function init()
     {
-        if (!isset($this->options['id']))
-        {
+        if (!isset($this->options['id'])) {
             $this->options['id'] = $this->getId();
         }
 
@@ -84,7 +87,12 @@ class NavBar extends \yii\bootstrap\NavBar {
      */
     protected function renderToggleButton()
     {
-        return Html::tag('div', '', ['class' => 'menu-toggler sidebar-toggler']);
+        if ($this->toogleMenuButton) {
+            return Html::tag('div', '<span></span>',
+                             ['class' => 'menu-toggler sidebar-toggler']);
+        } else {
+            return '';
+        }
     }
 
     /**
@@ -93,12 +101,10 @@ class NavBar extends \yii\bootstrap\NavBar {
      */
     protected function renderBrand()
     {
-        if ($this->brandLogoUrl)
-        {
-            $content = Html::img($this->brandLogoUrl, ['class' => 'logo-default', 'alt' => $this->brandLabel]);
-        }
-        else
-        {
+        if ($this->brandLogoUrl) {
+            $content = Html::img($this->brandLogoUrl,
+                                 ['class' => 'logo-default', 'alt' => $this->brandLabel]);
+        } else {
             $content = $this->brandLabel;
         }
 
@@ -106,5 +112,4 @@ class NavBar extends \yii\bootstrap\NavBar {
 
         return Html::tag('a', $content, $this->brandOptions);
     }
-
 }
